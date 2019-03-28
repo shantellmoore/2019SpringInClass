@@ -36,7 +36,7 @@ export default {
     }),
     methods:{
         login(){
-            this.user = { name: "name"};
+            this.user = { name: "Shantell"};
             
         }
     }
