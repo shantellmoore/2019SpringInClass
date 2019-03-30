@@ -2,7 +2,7 @@
     <div>
     <h1 v-if="Globals.user"> {{Globals.user.name}} Friends Page </h1>
     <ul>
-        <li v-for="friend in friends" :key="friend.id"> Friend 1</li>
+        <li v-for="friend in friends" :key="friend.id"> </li>
             {{friend.FirstName}}
     </ul>
     </div>
@@ -10,9 +10,8 @@
 
 <script>
 import {Globals} from "@/models/api";
-import { GetFriends } from "../models/users.js";
+import { GetFriends } from "@/models/users.js";
 
-GetFriends();
 
 export default {
     data: () => ({
