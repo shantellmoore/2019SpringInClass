@@ -17,7 +17,7 @@
                     <router-link class="nav-link" to="/Myfriends" active-class="active">My Friends</router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link class="nav-link disabled" href="#">Disabled</router-link>
+                    <router-link class="nav-link disabled" to= "#" href="#">Disabled</router-link>
                 </li>
                 </ul>
                 <form class="form-inline mt-2 mt-md-0" v-if="!Globals.user">
