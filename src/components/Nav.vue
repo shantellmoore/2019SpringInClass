@@ -25,7 +25,7 @@
                     <a href="#" class="nav-link">Sign up</a>
                     
                 </form>
-                <span class="navbar-text" v-if="Globals.user">Welcome {{Globals.user.name}}</span>
+                <span class="navbar-text" v-if="Globals.user">Welcome {{Globals.user.FirstName}}{{Globals.user.LastName}}</span>
             </div>
         </nav>
 </template>
