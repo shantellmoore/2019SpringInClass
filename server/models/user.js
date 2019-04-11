@@ -1,9 +1,10 @@
+
 const conn = require('./mysql_connection');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const SALT_ROUNDS = 8;
-const JWT_SECRET =  process.env.JWT_SECRET || 'somelong string...';
+const JWT_SECRET = process.env.JWT_SECRET || 'some long string..';
 
 const model = {
     async getAll(){
@@ -34,6 +35,7 @@ const model = {
         return jwt.verify(token, JWT_SECRET);
     },
     async login(email, password){
+        //console.log({ email, password })
         const data = await conn.query(`SELECT * FROM 2019Spring_Persons P
                         Join 2019Spring_ContactMethods CM On CM.Person_Id = P.id
                     WHERE CM.Value=?`, email);
@@ -42,8 +44,8 @@ const model = {
         }
         const x = await bcrypt.compare(password, data[0].Password);
         if(x){
-            const user= {...data[0], password: null}; //means user is now data
-            return {user, token: jwt.sign(user, JWT_SECRET)}; //sending two things back to user
+            const user = { ...data[0], password: null };
+            return { user, token: jwt.sign(user, JWT_SECRET) };
         }else{
             throw Error('Wrong Password');
         }
