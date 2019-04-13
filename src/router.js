@@ -4,10 +4,12 @@ import Home from './views/Home.vue'
 import MyFriends from "./views/Myfriends.vue"
 import Register from "./views/Register.vue";
 import Login from "./views/Login.vue";
+import { isMainThread } from 'worker_threads';
+import {Globals} from "@/models/api;"
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -41,3 +43,12 @@ export default new Router({
     }
   ]
 })
+router.beforeEach((to, from, next) => {
+  const publicRoutes = ['home', 'login', 'register'];
+  if(!publicRoutes.includes(to.name) && !Globals.user){
+    next('login');
+  }
+  next();
+})
+
+export default router;
