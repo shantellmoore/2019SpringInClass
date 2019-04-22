@@ -4,8 +4,7 @@ import Home from './views/Home.vue'
 import MyFriends from "./views/Myfriends.vue"
 import Register from "./views/Register.vue";
 import Login from "./views/Login.vue";
-import { isMainThread } from 'worker_threads';
-import {Globals} from "@/models/api;"
+import {Globals} from "@/models/api.js";
 
 Vue.use(Router)
 
@@ -46,7 +45,8 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   const publicRoutes = ['home', 'login', 'register'];
   if(!publicRoutes.includes(to.name) && !Globals.user){
-    next('login');
+    Globals.redirectRoute ={ name: to.name, path: to.path, params: to.params, query: to.query, hash: to.hash }
+    return next('login');
   }
   next();
 })
