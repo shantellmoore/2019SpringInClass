@@ -1,7 +1,7 @@
 const express   = require('express');
 const path      = require('path');
 const users     = require('./controllers/users');
-const userModel     = require('./models/user');
+const userModel  = require('./models/user');
 
 const app = express();
 const port = 3000;
