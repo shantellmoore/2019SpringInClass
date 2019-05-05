@@ -4,9 +4,14 @@ import Home from './views/Home.vue'
 import MyFriends from "./views/Myfriends.vue"
 import Register from "./views/Register.vue";
 import Login from "./views/Login.vue";
+import Cart from "./views/ShoppingCart.vue";
 import {Globals} from "@/models/api.js";
 
 Vue.use(Router)
+
+function guard(to,from,next){
+
+}
 
 const router = new Router({
   mode: 'history',
@@ -23,15 +28,12 @@ const router = new Router({
       component: MyFriends
     },
     {
-      path: '/Login',
-      name: 'login',
-      component: Login
-    },
-    {
       path: '/Register',
       name: 'register',
       component: Register
     },
+    { path: '/Login', name: 'login', component: Login },
+    { path: '/Cart', name: 'cart', component: Cart },
     {
       path: '/about',
       name: 'about',

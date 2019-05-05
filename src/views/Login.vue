@@ -45,9 +45,7 @@
 import { Globals } from "@/models/api";
 import { Login } from "@/models/users";
 import * as fb from "@/models/facebook";
-
 import toastr from 'toastr';
-
 export default {
     data: ()=> ({
         data: {},
@@ -66,7 +64,8 @@ export default {
         },
         async facebookLogin(){
           const m = await fb.Login();
-          Globals.user = { FirstName: m.name, Email: m.email }
+          console.log( {m} );
+          this.$router.push(Globals.redirectRoute)
         }
     }
 }
